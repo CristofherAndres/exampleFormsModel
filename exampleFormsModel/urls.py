@@ -15,9 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from formsModelAPP.views import index
+from formsModelAPP.views import index, listadoEmpleados, crearEmpleado
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index),
+    path('empleados/', listadoEmpleados),
+    path('agregar/', crearEmpleado),
 ]
