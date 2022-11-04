@@ -36,3 +36,20 @@ def crearEmpleado(request):
 
     data = {'form':form, 'titulo':'Crear empleado'}
     return render(request, 'crearEmpleado.html', data)
+
+def eliminarEmpleado(request, id):
+    empleado = Empleado.objects.get(id=id)
+    empleado.delete()
+    return redirect('/empleados')
+
+
+def editarEmpleado(request, id):
+    empleado = Empleado.objects.get(id=id)
+    form = EmpleadoForm(instance=empleado)
+    if (request.method == 'POST'):
+        form = EmpleadoForm(request.POST, instance=empleado)
+        if (form.is_valid()):
+            form.save()
+            return redirect('/empleados')
+    data = {'form':form, 'titulo':'Editar empleado'}
+    return render(request, 'crearEmpleado.html', data)

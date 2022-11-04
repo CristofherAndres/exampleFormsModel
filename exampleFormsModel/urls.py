@@ -15,11 +15,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from formsModelAPP.views import index, listadoEmpleados, crearEmpleado
+from formsModelAPP.views import index, listadoEmpleados, crearEmpleado, eliminarEmpleado, editarEmpleado
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index),
     path('empleados/', listadoEmpleados),
     path('agregar/', crearEmpleado),
+    path('eliminarEmpleado/<int:id>',eliminarEmpleado),
+    path('editarEmpleado/<int:id>',editarEmpleado)
 ]

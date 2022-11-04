@@ -19,9 +19,13 @@
     <form method="POST">
         <table class="table">
             {{form.as_table}}
+            {% for error in form.password.errors %}
+                <p  style="color: red">{{error}}</p>
+            {% endfor %}
+
             <tr>
                 <td colspan="2">
-                        <input type="submit" class="btn btn-success float-end" value="Crear empleado">
+                        <input type="submit" class="btn btn-success float-end" value="{{titulo}}">
                         <a href="/empleados" class="btn btn-danger">Volver</a>
                 </td>
             </tr>
